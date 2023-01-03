@@ -3,112 +3,166 @@
 Spyder Editor
 
 python practice
-"""
+
 "get familiar with python"
 
-'''
-print("Hello world!!")
-print("  /")
-print(" /")
-print("/")
+"""
 
-Character_name = "Peter"
-Character_age = "35"
-print("Once, there was a man named " + Character_name + ",")
-print("he is " +Character_age+ " years old")
 
-Character_name ="Tom"
-print("However, he now prefer to be called by " +Character_name+ ".")
-'''   
+"""
+practice print function
 
-'''
-String is way to store words and symbles
-we can also store numbers
-we can work with True/False value
+"""
 
-'''
+# print("Hello world!!")
+# print("  /")
+# print(" /")
+# print("/")
 
+"""
+print with a string in it
+
+"""
+
+# Character_name = "Peter"
+# Character_age = "35"
+# print("Once, there was a man named " + Character_name + ",")
+# print("he is " +Character_age+ " years old")
+
+# Character_name ="Tom"
+# print("However, he now prefer to be called by " +Character_name+ ".")
+
+"""
 
 "working with strings in python"
+String is way to store words and symbles
+we can also store numbers
+we can work with True/False value (Boolean Values)
 
-'''
+"""
 
-print("Giraffe\nAcademy")
-print("Giraffe\"..\"Academy")
-print("Giraffe\..\Academy")
+# print("Giraffe\nAcademy")
+# print("Giraffe\"..\"Academy")
+# print("Giraffe\..\Academy")
 
-phrase = "william and mary tokamak"
-print(phrase)
+# phrase = "william and mary tokamak"
+# print(phrase)
 
+"""
 "concatenation"
-phrase = "william and mary tokamak"
-print(phrase + " is cool")
+practice to connect a series of strings
+"""
 
+# phrase = "william and mary tokamak"
+# print(phrase + " is cool")
+
+
+"""
 
 "operate with functions"
-fn = "WE ARE THE CHAMPIONS"
-print(fn.lower())
-print(fn.upper())
-print(fn.upper().isupper())
-print(len(fn))
-print(len(phrase))
-print(phrase[0])
-print(fn[5])
-print(fn.index("M"))
-print(fn.replace("CHAMPIONS","SUPERSTARS"))
+practice using functions associated with strings praperties
+lower: return lower case of each character in the strings
+upper: return upper case of each character in the strings
+islower: return Boolean values of a string, lower -> true
+isupper: return Boolean values of a string, upper -> true
+len: return the length of a string
+[0]: the index number assigned to each character in a string, 
+    ex: 0 is the first character in a string
+index: return the number assigned to the input character
+replace: return a new string with replaced characters
 
-'''
+curious:
+What is the isupper result of "PracTice"?
+Can index return multiple input result?
+If there several same words in a string, can we replace at once?
+How to replace a word in a code?
+Does the length include space?
+What will happen if we assign a number longer than the length of a string?
+Same question 
+
+"""
+
+# phrase = "william and mary tokamak"
+# print(phrase + " is cool")
+# fn = "WE ARE THE CHAMPIONS"
+# print(fn.lower())
+# print(fn.upper())
+# print(fn.upper().isupper())
+# print(len(fn))
+# print(len(phrase))
+# print(phrase[0])
+# print(fn[5])
+# print(fn.index("M"))
+# print(fn.replace("CHAMPIONS","SUPERSTARS"))
+
+"""
 
 "Working with numbers in python"
-
 "basic math calculation"
 
-'''
-print(2)
-print(2.0986)
-print(-2.0986)
-print(2 + 3.7)
-print(4*6)
-print(10/5)
-print(4-3)
-print(4*2+7)
-print(4*(2+7))
-print(45 % 2)
+%: mod?
 
-'''
+"""
 
+# print(2)
+# print(2.0986)
+# print(-2.0986)
+# print(2 + 3.7)
+# print(4*6)
+# print(10/5)
+# print(4-3)
+# print(4*2+7)
+# print(4*(2+7))
+# print(45 % 2)
+
+"""
 "math calculation 2"
-'''
+str(): change input float number into string
+python can print an array
+abs: return the absolute value of a number
+pow(a,b): return the value of a to the power of b
+max(a,b,...): return the maximum value among a,b,...
+min(a,b,...):  return the maximum value among a,b,...
+round(number, digits): return a rounded number with accuracy to assigned digits
 
-my_num = 7
-print(str(my_num) + " is my favorite number.")
-my_ar = [7, 2, 5]
-print(my_ar)
-my_number = -9
-print(abs(my_number))
-print(pow(2,3))
-print(pow(3,-1))
-print(pow(-7,4))
-print(max(-20,5))
-print(min(-20,5))
-print(max(pow(3,4),pow(4,3)))
-print(min(pow(3,4),pow(4,3)))
-print(round(4.2))
+"""
 
-'''
-"import python math"
-'''
-import math
+# my_num = 7
+# print(str(my_num) + " is my favorite number.")
+# my_ar = [7, 2, 5]
+# print(my_ar)
+# my_number = -9
+# print(abs(my_number))
+# print(pow(2,3))
+# print(pow(3,-1))
+# print(pow(-7,4))
+# print(max(-20,5))
+# print(min(-20,5))
 
-print(math.floor(3.7))
-print(math.ceil(3.7))
-print(math.sqrt(81))
+"use both max, min, and pow"
+# print(max(pow(3,4),pow(4,3)))
+# print(min(pow(3,4),pow(4,3)))
+# print(round(4.2))
 
-"interaction with user"
+"""
+"import python math module"
+math.floor: roun
 
-print("Enter your name: ")
-name = input()
-print("Hello, " + name)
+"""
+
+# import math
+
+# print(math.floor(3.7))
+# print(math.ceil(3.7))
+# print(math.sqrt(81))
+
+# "interaction with user"
+
+# print("Enter your name: ")
+# name = input()
+# print("Hello, " + name)
+
+
 '''
 
 "build a calculator"
