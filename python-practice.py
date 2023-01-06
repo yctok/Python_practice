@@ -100,7 +100,7 @@ Same question
 "Working with numbers in python"
 "basic math calculation"
 
-%: mod?
+%: mod
 
 """
 
