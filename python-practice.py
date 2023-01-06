@@ -8,7 +8,6 @@ python practice
 
 """
 
-
 """
 practice print function
 
@@ -65,42 +64,53 @@ lower: return lower case of each character in the strings
 upper: return upper case of each character in the strings
 islower: return Boolean values of a string, lower -> true
 isupper: return Boolean values of a string, upper -> true
+    *The isupper result of "PracTice" is false
+    *The islower result of "PracTice" is false
 len: return the length of a string
+    *The length calculate by len function includes space
 [0]: the index number assigned to each character in a string, 
     ex: 0 is the first character in a string
+    *If we assign a number longer than the length of a string, there will be an error
+    *print index number have to start from smaller number to larger number for both positive and negative numbers
+        **If print the index number with wrong order, it will show nothing
 index: return the number assigned to the input character
+    *index returns the first index number of the charactor it assigned to find
+
 replace: return a new string with replaced characters
+    *If there several same words in a string, can we replace at once? Yes!
+    *' food[3] = "icecream" ' can not be used in string variable
+
 
 curious:
-What is the isupper result of "PracTice"?
-Can index return multiple input result?
-If there several same words in a string, can we replace at once?
 How to replace a word in a code?
-Does the length include space?
-What will happen if we assign a number longer than the length of a string?
-Same question 
-
+ 
 """
 
-# phrase = "william and mary tokamak"
+phrase = "william and mary tokamak"
 # print(phrase + " is cool")
-# fn = "WE ARE THE CHAMPIONS"
+fn = "WE ARE THE CHAMPIONS"
+fm = "PracTice"
+tn = "P A Q"
 # print(fn.lower())
 # print(fn.upper())
 # print(fn.upper().isupper())
-# print(len(fn))
+# print(fm.isupper())
+# print(fm.islower())
+# print(len(tn))
 # print(len(phrase))
-# print(phrase[0])
+# print(tn[0])
+# print(phrase[-2:-5])
+# print(phrase[2:4])
 # print(fn[5])
 # print(fn.index("M"))
 # print(fn.replace("CHAMPIONS","SUPERSTARS"))
+# print(fn.replace("E","BB"))
 
 """
 
 "Working with numbers in python"
 "basic math calculation"
-
-%: mod?
+%: mod
 
 """
 
@@ -146,7 +156,9 @@ round(number, digits): return a rounded number with accuracy to assigned digits
 
 """
 "import python math module"
-math.floor: roun
+math.floor: round the input number to the closest smaller integer
+math.ceil:  round the input number to the closest larger integer
+math.sqrt: return square root of the imput number
 
 """
 
@@ -156,48 +168,46 @@ math.floor: roun
 # print(math.ceil(3.7))
 # print(math.sqrt(81))
 
-# "interaction with user"
+"Small projects"
+
+"1. interaction with user"
 
 # print("Enter your name: ")
 # name = input()
 # print("Hello, " + name)
 
+"2. build a calculator"
 
-'''
+# num1 = 7.2
+# num2 = 8.6
+# result1 = int(num1) + int(num2)
+# result2 = float(num1) + float(num2)
+# re = [result1, result2]
+# print(re[0])
+# print(re)
 
-"build a calculator"
-
-'''
-num1 = 7.2
-num2 = 8.6
-result1 = int(num1) + int(num2)
-result2 = float(num1) + float(num2)
-re = [result1, result2]
-print(re[0])
-print(re)
-
-'''
-
-"mad libs game"
+"""
 
 "lists"
 
-'''
-friends = ["Kevin","Rob","Derek"]
-print(friends[1])
-print(friends[-1])
-print(friends[1:])
-print(friends[-2:])
-print(friends[-3:-2])
+"""
 
-flist = ["Kevin","Rob","Derek", "Oscar", "Pravin"]
-print(flist[1:4])
 
-food = ["chocolate","cookie","candy","bread"]
-food[3] = "icecream"
-print(food[3])
+# friends = ["Kevin","Rob","Derek"]
+# print(friends[1])
+# print(friends[-1])
+# print(friends[1:])
+# print(friends[-2:])
+# print(friends[-3:-2])
 
-'''
+# flist = ["Kevin","Rob","Derek", "Oscar", "Pravin"]
+# print(flist[1:4])
+
+# food = ["chocolate","cookie","candy","bread"]
+# food[3] = "icecream"
+# print(food)
+# print(food[3])
+
 
 "list function"
 
