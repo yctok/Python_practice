@@ -88,9 +88,9 @@ How to replace a word in a code?
 
 phrase = "william and mary tokamak"
 # print(phrase + " is cool")
-fn = "WE ARE THE CHAMPIONS"
-fm = "PracTice"
-tn = "P A Q"
+# fn = "WE ARE THE CHAMPIONS"
+# fm = "PracTice"
+# tn = "P A Q"
 # print(fn.lower())
 # print(fn.upper())
 # print(fn.upper().isupper())
@@ -209,16 +209,19 @@ math.sqrt: return square root of the imput number
 # print(food)
 # print(food[3])
 
-
+"""
 "list function"
+*The reason why we need extra same array because friends array have changed after we apply .extend function
 
-lucky_number = [4, 8, 6, 10, 15]
-friends =  ["Kevin","Rob","Derek", "Oscar", "Pravin"]
-fr =  ["Kevin","Rob","Derek", "Oscar", "Pravin"]
-friends.extend(lucky_number)
-print(friends)
-friends.extend(fr)
-print(friends)
+"""
+
+# lucky_number = [4, 8, 6, 10, 15]
+# friends =  ["Kevin","Rob","Derek", "Oscar", "Pravin"]
+# fr =  ["Kevin","Rob","Derek", "Oscar", "Pravin"]
+# friends.extend(lucky_number)
+# print(friends)
+# friends.extend(fr)
+# print(friends)
 
 
 
