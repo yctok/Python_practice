@@ -288,43 +288,65 @@ The keyword: return allow functions to send back information
 
 "Clear version"
 
-import argparse
+# import argparse
 
-parser = argparse.ArgumentParser(description='basic calculator')
-parser.add_argument('-a', '--number_1',type= float, metavar= '', required=True, help='first number for calculation')
-parser.add_argument('-d', '--operator',type= str, metavar= '', required=True, help='define the operator')
-parser.add_argument('-b', '--number_2',type= float, metavar= '', required=True, help='second number for calculation')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser(description='basic calculator')
+# parser.add_argument('-a', '--number_1',type= float, metavar= '', required=True, help='first number for calculation')
+# parser.add_argument('-d', '--operator',type= str, metavar= '', required=True, help='define the operator')
+# parser.add_argument('-b', '--number_2',type= float, metavar= '', required=True, help='second number for calculation')
+# args = parser.parse_args()
 
-def calculator(number_1, operator, number_2):
-    cal = [number_1, number_2, operator]
-    return cal
+# def calculator(number_1, operator, number_2):
+#     cal = [number_1, number_2, operator]
+#     return cal
     
 
-if __name__ == '__main__':
-    result = calculator(args.number_1, args.operator, args.number_2)
-    if args.operator == "'+'":
-        print((result[0])+(result[1]))
-    elif args.operator == "'-'":
-        print((result[0])-(result[1]))
-    elif args.operator == "'*'":
-        print((result[0])*(result[1]))
-    elif args.operator == "'/'" and result[1] != 0:
-        print((result[0])/(result[1]))
-    elif args.operator == "'/'" and result[1] == 0:
-        print("we have trouble dividing zero")
-    elif args.operator == "'**'":
-        print((result[0])**(result[1]))
-    else:
-        print("Invalid operator")
+# if __name__ == '__main__':
+#     result = calculator(args.number_1, args.operator, args.number_2)
+#     if args.operator == "'+'":
+#         print((result[0])+(result[1]))
+#     elif args.operator == "'-'":
+#         print((result[0])-(result[1]))
+#     elif args.operator == "'*'":
+#         print((result[0])*(result[1]))
+#     elif args.operator == "'/'" and result[1] != 0:
+#         print((result[0])/(result[1]))
+#     elif args.operator == "'/'" and result[1] == 0:
+#         print("we have trouble dividing zero")
+#     elif args.operator == "'**'":
+#         print((result[0])**(result[1]))
+#     else:
+#         print("Invalid operator")
 
 "dictionaries"
 
 """
 Dictionaries allow data to be stored in key-value pairs
+key -> words, value -> definition and explanation
+
+*Dictionaries are created with a curly bracket (braces),
+    all key-value pairs are stored in it
+*key and value have to be a one to one relation
+*get(): return value correspond to the assigned key
+    **get() returns a value 'None' when the assigned key's value is not found
+
+
+
+ 
 
 
 """
+
+Spring_Conversion = {
+    "Feb": "February",
+    "Mar": "March",
+    "Apr": "April",
+    }
+
+print(Spring_Conversion["Apr"])
+print(Spring_Conversion.get("Mar"))
+print(Spring_Conversion.get("Jul"))
+
 
 
     
