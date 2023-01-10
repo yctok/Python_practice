@@ -331,21 +331,75 @@ key -> words, value -> definition and explanation
     **get() returns a value 'None' when the assigned key's value is not found
 
 
-
- 
-
-
 """
 
+"Store key-value pair in strings"
+
+# Spring_Conversion = {
+#     "Feb": "February",
+#     "Mar": "March",
+#     "Apr": "April",
+#     }
+
+# print(Spring_Conversion["Apr"])
+# print(Spring_Conversion.get("Mar"))
+# print(Spring_Conversion.get("Jul"))
+# print(Spring_Conversion.get("Jul", "Not a valid key"))
+
+"Store key-value pair with numbers and strings"
+
+"Strings as key"
+
+# Spring_Conversion = {
+#     "Feb": 2,
+#     "Mar": 3,
+#     "Apr": 4,
+#     }
+
+# print(Spring_Conversion["Apr"])
+# print(Spring_Conversion.get("Mar"))
+# print(Spring_Conversion.get("Jul"))
+# print(Spring_Conversion.get("Jul", "Not a valid key"))
+
+
+"Strings as value"
+
+# Spring_Conversion = {
+#      2: "February",
+#      3: "March",
+#      4: "April",
+#     }
+
+# print(Spring_Conversion[4])
+# print(Spring_Conversion.get(3))
+# print(Spring_Conversion.get(7))
+# print(Spring_Conversion.get(7, "Not a valid key"))
+
+"Mixed key"
+
 Spring_Conversion = {
-    "Feb": "February",
-    "Mar": "March",
-    "Apr": "April",
+     2: "February",
+     3: "March",
+     4: "April",
+     "Feb": 2,
+     "Mar": 3,
+     "Apr": 4,
     }
 
+print(Spring_Conversion[4])
+print(Spring_Conversion.get(3))
 print(Spring_Conversion["Apr"])
 print(Spring_Conversion.get("Mar"))
-print(Spring_Conversion.get("Jul"))
+print(Spring_Conversion.get(7))
+print(Spring_Conversion.get(7, "Not a valid key"))
+
+"While loop"
+
+
+
+
+
+
 
 
 
