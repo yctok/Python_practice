@@ -22,5 +22,10 @@ print(type(item1_price_total))#int
 
 """
 even though we give all the variables item1 in front of them,
-for python, they are just different variables
+for python, they are four variables with different data type
+
+We want to create a framework that price and quantity are related to our item
 """
+
+"Create a class"
+
