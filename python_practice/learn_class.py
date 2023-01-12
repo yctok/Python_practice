@@ -265,12 +265,108 @@ __init__ method can help us to count the number of employee
 The method we written above is a regular method,
     it takes self as its first variable
 
+A class method takes class as its first variable
+
 use class method to set raise_amount = 1.05 is equal to set it like:
     Employee.raise_amt = 1.05
     We can also use a instance: emp_1.set_raise_amt =1.05 (not recommend)
 
+"Class method as an ulternative constructor"
+
+Use class method to provide multiple ways to create our own objects
+
+"Static method"
+
+Static method do not pass in the first variable automatically, so
+    they act like regular function but have logical connection with the class
+
+If we do not pass in an instance or a class as a variable in a method we written
+    in the class, then that method is a static method
+
 
     
+"""
+
+# class Employee():
+#     num_of_emps = 0
+#     raise_amount = 1.04
+    
+#     def __init__(self, first, last, pay):
+#         self.first = first
+#         self.last = last
+#         self.pay = pay
+#         self.email = first + '_' + last + '@w&m.com'
+        
+#         Employee.num_of_emps += 1
+    
+#     def fullname(self):
+#         return '{} {}'.format(self.first, self.last)
+    
+#     def apply_raise(self):
+#         self.pay = int(self.pay * self.raise_amt)
+    
+#     @classmethod
+#     def set_raise_amt(cls, amount):
+#         cls.raise_amt = amount
+    
+#     @classmethod
+#     def from_string(cls, emp_str):
+#         first, last, pay = emp_str.split('-')
+#         return cls(first, last, pay)
+    
+#     @staticmethod
+#     def is_workday(day):
+#         if day.weekday() == 5 or day.weekday() == 6:
+#             return False
+#         return True
+    
+    
+# emp_1 = Employee('Corey', 'Schafer', 50000)
+# emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
+
+
+"equivalent code"
+
+# Employee.set_raise_amt(1.05) 
+# Employee.raise_amt = 1.05 
+
+"""
+Example problem:
+    Suppose the employee data is passed in first-last-pay format, instead of
+    using split function all the time, we can create a class method to do so.
+
+"""
+
+# emp_str_1 = 'John-Doe-70000'
+# emp_str_2 = 'Steve-Smith-30000'
+
+
+"Inefficient way"
+
+# first, last, pay = emp_str_1.split('-')
+
+# new_emp_1 = Employee(first, last, pay)
+# print(new_emp_1.email)
+# print(new_emp_1.pay)
+
+"Work with class method"
+
+# new_emp_2 = Employee.from_string(emp_str_2)
+# print(new_emp_2.email)
+# print(new_emp_2.pay)
+
+"Static methods"
+
+# import datetime
+# my_date = datetime.date(2023, 1, 12)
+
+# print(Employee.is_workday(my_date))
+
+"Tutorial 4: Inheritance - Creating Subclasses"
+
+"""
+The reason to create subclasses is to
+
 """
 
 class Employee():
@@ -291,19 +387,13 @@ class Employee():
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_amt)
     
-    @classmethod
-    def set_raise_amt(cls, amount):
-        cls.raise_amt = amount
         
 emp_1 = Employee('Corey', 'Schafer', 50000)
 emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
 
 
-"equivalent code"
 
-Employee.set_raise_amt(1.05) 
-Employee.raise_amt = 1.05 
-    
+
 
 
 
