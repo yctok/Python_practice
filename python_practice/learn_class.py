@@ -197,29 +197,29 @@ __init__ method can help us to count the number of employee
 
 """
 
-class Employee():
-    num_of_emps = 0
-    raise_rate = 1.04
+# class Employee():
+#     num_of_emps = 0
+#     raise_rate = 1.04
     
-    def __init__(self, first, last, pay):
-        self.first = first
-        self.last = last
-        self.pay = pay
-        self.email = first + '_' + last + '@w&m.com'
+#     def __init__(self, first, last, pay):
+#         self.first = first
+#         self.last = last
+#         self.pay = pay
+#         self.email = first + '_' + last + '@w&m.com'
         
-        Employee.num_of_emps += 1
+#         Employee.num_of_emps += 1
     
-    def fullname(self):
-        return '{} {}'.format(self.first, self.last)
+#     def fullname(self):
+#         return '{} {}'.format(self.first, self.last)
     
-    def apply_raise(self):
-        self.pay = int(self.pay * self.raise_rate)
+#     def apply_raise(self):
+#         self.pay = int(self.pay * self.raise_rate)
 
     
-print(Employee.num_of_emps)
+# print(Employee.num_of_emps)
 
-emp_1 = Employee('Corey', 'Schafer', 50000)
-emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
+# emp_1 = Employee('Corey', 'Schafer', 50000)
+# emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
 
 # print(emp_1.pay)
 # emp_1.apply_raise()
@@ -256,11 +256,54 @@ emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
 
 "Number of employee"
 
-print(Employee.num_of_emps)
+# print(Employee.num_of_emps)
 
 
 "Tutorial 3: Static method and Class method"
 
+"""
+The method we written above is a regular method,
+    it takes self as its first variable
+
+use class method to set raise_amount = 1.05 is equal to set it like:
+    Employee.raise_amt = 1.05
+    We can also use a instance: emp_1.set_raise_amt =1.05 (not recommend)
+
+
+    
+"""
+
+class Employee():
+    num_of_emps = 0
+    raise_amount = 1.04
+    
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.pay = pay
+        self.email = first + '_' + last + '@w&m.com'
+        
+        Employee.num_of_emps += 1
+    
+    def fullname(self):
+        return '{} {}'.format(self.first, self.last)
+    
+    def apply_raise(self):
+        self.pay = int(self.pay * self.raise_amt)
+    
+    @classmethod
+    def set_raise_amt(cls, amount):
+        cls.raise_amt = amount
+        
+emp_1 = Employee('Corey', 'Schafer', 50000)
+emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
+
+
+"equivalent code"
+
+Employee.set_raise_amt(1.05) 
+Employee.raise_amt = 1.05 
+    
 
 
 
