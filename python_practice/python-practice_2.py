@@ -115,8 +115,6 @@ The keyword: return allow functions to send back information
 *In if statement, if certain condition is true, we do something,
     or we go to check other conditions
 
-
-
 """
 
 # is_male = False
@@ -161,9 +159,7 @@ The keyword: return allow functions to send back information
 # else:
 #     print("You are neither male nor tall")
 
-
 "Combine all"
-
 
 # is_male = False
 # is_tall = True
@@ -177,7 +173,6 @@ The keyword: return allow functions to send back information
 # else:
 #     print("You are neither male nor tall")
     
-
 "If statement and comparisons"
 
 "function that find the largest number"
@@ -249,7 +244,6 @@ The keyword: return allow functions to send back information
 #     cal = [number_1, number_2, operator]
 #     return cal
     
-
 # if __name__ == '__main__':
 #     result = calculator(args.number_1, args.operator, args.number_2)
 #     if args.operator == "'+'":
@@ -276,7 +270,6 @@ The keyword: return allow functions to send back information
 #         print(val)
 #     else:
 #         print("Invalid operator")
-
 
 "Debug tool"
     
@@ -330,7 +323,6 @@ key -> words, value -> definition and explanation
 *get(): return value correspond to the assigned key
     **get() returns a value 'None' when the assigned key's value is not found
 
-
 """
 
 "Store key-value pair in strings"
@@ -361,7 +353,6 @@ key -> words, value -> definition and explanation
 # print(Spring_Conversion.get("Jul"))
 # print(Spring_Conversion.get("Jul", "Not a valid key"))
 
-
 "Strings as value"
 
 # Spring_Conversion = {
@@ -377,23 +368,25 @@ key -> words, value -> definition and explanation
 
 "Mixed key"
 
-Spring_Conversion = {
-     2: "February",
-     3: "March",
-     4: "April",
-     "Feb": 2,
-     "Mar": 3,
-     "Apr": 4,
-    }
+# Spring_Conversion = {
+#      2: "February",
+#      3: "March",
+#      4: "April",
+#      "Feb": 2,
+#      "Mar": 3,
+#      "Apr": 4,
+#     }
 
-print(Spring_Conversion[4])
-print(Spring_Conversion.get(3))
-print(Spring_Conversion["Apr"])
-print(Spring_Conversion.get("Mar"))
-print(Spring_Conversion.get(7))
-print(Spring_Conversion.get(7, "Not a valid key"))
+# print(Spring_Conversion[4])
+# print(Spring_Conversion.get(3))
+# print(Spring_Conversion["Apr"])
+# print(Spring_Conversion.get("Mar"))
+# print(Spring_Conversion.get(7))
+# print(Spring_Conversion.get(7, "Not a valid key"))
 
 "While loop"
+
+
 
 
 
