@@ -197,14 +197,21 @@ class SOLPSxport:
 
     # ----------------------------------------------------------------------------------------
 
-    # def readMastData(self):
-    #
-    #     self.data['expData']['fitPsiProf'] =
-    #     self.data['expData']['fitProfs']['neprof'] =
-    #     self.data['expData']['fitProfs']['teprof'] =
-    #
-    #     try:
-    #         self.data['expData']['fitProfs']['tiprof'] =
+
+    def readMastData(self, mastfile_loc):
+        self.timeid = mastfile_loc[mastfile_loc.rfind('_')+1:mastfile_loc.rfind('.')]
+        
+        mastfile_dict = sut.read_mastfile(mastfile_loc)
+        self.data['expData']['fitPsiProf'] = mastfile_dict['psi_normal']
+        self.data['expData']['fitProfs']['neprof'] = mastfile_dict['electron_density(10^20/m^3)']
+        self.data['expData']['fitProfs']['teprof'] = mastfile_dict['electron_temperature(KeV)']
+    
+        try:
+            self.data['expData']['fitProfs']['tiprof'] = mastfile_dict['ion_temperature(KeV)']
+        except:
+            print('No Ti data in pfile, defaulting to Ti = Te')
+            self.data['expData']['fitProfs']['tiprof'] = self.data['expData']['fitProfs']['teprof']
+
 
     # ----------------------------------------------------------------------------------------
     
