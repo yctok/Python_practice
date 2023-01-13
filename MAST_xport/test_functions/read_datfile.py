@@ -48,11 +48,34 @@ rfind(): return the position of the last substring found in the string
 # a.rfind('is')
 # print(a.rfind('is'))
 
-def find_time(mastfile_loc):
-    timeid = mastfile_loc[mastfile_loc.rfind('_')+1:mastfile_loc.rfind('.')]
-    return timeid
+# def find_time(mastfile_loc):
+#     timeid = mastfile_loc[mastfile_loc.rfind('_')+1:mastfile_loc.rfind('.')]
+#     return timeid
 
-print(find_time('yag_27205_275.dat'))
+# print(find_time('yag_27205_275.dat'))
+
+
+# def check_tail(mastfile_loc):
+#     if mastfile_loc[-4:] == '.dat':
+#         return True
+#     else:
+#         return False
+
+# print(check_tail('yag_27205_275.dat'))
+
+
+
+def check_shotnum(gfile_loc, shotnum = None):
+    if shotnum is None:
+        try:
+            shotnum = int(gfile_loc[gfile_loc.rfind('g')+1:gfile_loc.rfind('.')])
+            return shotnum
+        except:
+            return None
+    
+print(check_shotnum('g027205.00275_efitpp'))    
+
+        
 
 
 
