@@ -166,8 +166,8 @@ def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
         xp.loadProfDBPedFit(profiles_fileloc, shotnum, ptimeid, prunid, verbose=True)
         print("Populating PedFits")
         xp.populatePedFits(nemod=nefit, temod=tefit, ncmod=ncfit, npsi=250, plotit=plotall)
-    # elif profiles_fileloc[:-5] == '.mast':
-    #     xp.readMastData(profiles_fileloc)
+    elif profiles_fileloc[-4:] == '.dat':
+        xp.readMastData(profiles_fileloc)
     else:
         print("Loading profiles from pfile")
         xp.load_pfile(profiles_fileloc, plotit=plotall)
