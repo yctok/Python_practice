@@ -51,8 +51,6 @@ readline(): return a string, it is a line in the file.
             readline() ends with an empty line by defult, we can use:
                 end= '' to change it to an empty string 
 
-
-
 """
 
 # with open('test.txt','r') as f:
@@ -106,8 +104,9 @@ Change to end= '*', so we can see how the characters are printed
 #         f_contents = f.read(read_character_size)
 
 "find the current reading position"
-"""
 
+"""
+tell(): return the current reading position
 
 """
 
@@ -115,7 +114,26 @@ Change to end= '*', so we can see how the characters are printed
 #     read_character_size = 10
 #     f_contents = f.read(read_character_size)
 #     print(f.tell())
+
+
+"Repeat the last time reading"
+
+"""
+seek(): use the position assigned to indicate the text reader where to start reading
+
+"""
+
+# with open('test.txt','r') as f:
+#     read_character_size = 10
+#     f_contents = f.read(read_character_size)
+#     print(f_contents, end='')
     
+#     f.seek(5)
+    
+#     f_contents = f.read(read_character_size)
+#     print(f_contents)
+
+
     
 
 
