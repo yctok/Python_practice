@@ -614,11 +614,15 @@ class SOLPSxport:
             psi_solps_LL = psiNinterp(crLowerLeft[i], czLowerLeft[i])
             psi_solps_UL = psiNinterp(crUpperLeft[i], czUpperLeft[i])
             psi_solps[i] = np.mean([psi_solps_LL,psi_solps_UL])
+        
+        
 
         self.data['solpsData']['crLowerLeft'] = np.array(crLowerLeft)
         self.data['solpsData']['czLowerLeft'] = np.array(czLowerLeft)
         self.data['solpsData']['dsa'] = np.array(dsa)
         self.data['solpsData']['psiSOLPS'] = np.array(psi_solps)
+        
+        # from IPython import embed; embed()
 
         if plotit:
             psiN_range = [np.min(psi_solps), np.max(psi_solps)]
@@ -685,7 +689,8 @@ class SOLPSxport:
         # self.data['solpsData']['profiles']['hy1'] = np.array(hy1)  # not used anymore
         self.data['solpsData']['profiles']['qe'] = np.array(qe)
         self.data['solpsData']['profiles']['qi'] = np.array(qi)
-
+        
+        
 
         if plotit:
                 
@@ -832,11 +837,14 @@ class SOLPSxport:
         qi = self.data['solpsData']['profiles']['qi']
         
         psi_to_dsa_func = interp1d(psi_solps, dsa, fill_value = 'extrapolate')
+        
+        
 
         # Convective portion of heat flux to be subtracted to get diffusive component
         # These are not actually used with the way it's coded now
         # SOLPS_qe_conv = 2.5 * dold * teold * eV
         # SOLPS_qi_conv = 2.5 * dold * tiold * eV
+        
         
         
         # ne and Gamma_e
@@ -848,12 +856,14 @@ class SOLPSxport:
 
         gnold_dsa = np.gradient(neold) / np.gradient(dsa)  # Only used for dnew_ratio
         gnexp_dsa = np.gradient(neexp) / np.gradient(dsa_TSprofile)
-
+        
         gnexp_dsafunc = interp1d(dsa_TSprofile, gnexp_dsa)
         # psi_to_dsa_func function only valid in SOLPS range,
         # so gnexp_dsafunc shouldn't be applied outside that
         gnexp_solpslocs_dsa = gnexp_dsafunc(dsa)
-
+        
+        
+        
         # Set boundary condition to get ne[-1] right
         expden_dsa_func = interp1d(dsa_TSprofile, neexp)
         den_decay_len = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
