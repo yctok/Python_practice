@@ -207,6 +207,7 @@ class SOLPSxport:
         self.data['expData']['fitProfs']['teprof'] = mastfile_dict['electron_temperature(KeV)']
     
         try:
+            self.data['expData']['fitProfs']['tipsi'] = mastfile_dict['psi_normal']
             self.data['expData']['fitProfs']['tiprof'] = mastfile_dict['ion_temperature(KeV)']
         except:
             print('No Ti data in pfile, defaulting to Ti = Te')
@@ -379,7 +380,9 @@ class SOLPSxport:
 
         tiexp = self.data['expData']['fitProfs']['tiprof']
         tiexppsi = self.data['expData']['fitProfs']['tipsi']
-
+        
+        #from IPython import embed; embed()
+        
         r_cell = self.data['solpsData']['crLowerLeft']
         z_cell = self.data['solpsData']['czLowerLeft']
         psin = self.data['solpsData']['psiSOLPS']
@@ -388,6 +391,7 @@ class SOLPSxport:
 
         ti_mod = tiexp.copy()
         xrad = tiexppsi.copy()
+        
 
         if reduce_ti:
 
@@ -854,10 +858,12 @@ class SOLPSxport:
         
         dsa_TSprofile = psi_to_dsa_func(psi_data_fit)
 
+        #from IPython import embed; embed()
+
         gnold_dsa = np.gradient(neold) / np.gradient(dsa)  # Only used for dnew_ratio
         gnexp_dsa = np.gradient(neexp) / np.gradient(dsa_TSprofile)
         
-        gnexp_dsafunc = interp1d(dsa_TSprofile, gnexp_dsa)
+        gnexp_dsafunc = interp1d(dsa_TSprofile, gnexp_dsa, fill_value = 'extrapolate')
         # psi_to_dsa_func function only valid in SOLPS range,
         # so gnexp_dsafunc shouldn't be applied outside that
         gnexp_solpslocs_dsa = gnexp_dsafunc(dsa)
@@ -865,7 +871,7 @@ class SOLPSxport:
         
         
         # Set boundary condition to get ne[-1] right
-        expden_dsa_func = interp1d(dsa_TSprofile, neexp)
+        expden_dsa_func = interp1d(dsa_TSprofile, neexp, fill_value = 'extrapolate')
         den_decay_len = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
             np.mean([expden_dsa_func(dsa[-1]), expden_dsa_func(dsa[-2])])
         if verbose: print('den_decay_len = ' + str(den_decay_len))
@@ -894,11 +900,11 @@ class SOLPSxport:
         gteold = np.gradient(teold) / np.gradient(dsa)
         gteexp = np.gradient(teexp) / np.gradient(dsa_TSprofile)
 
-        gteexp_dsafunc = interp1d(dsa_TSprofile, gteexp)
+        gteexp_dsafunc = interp1d(dsa_TSprofile, gteexp, fill_value = 'extrapolate')
         gteexp_solpslocs = gteexp_dsafunc(dsa)
         
         # Set boundary condition to get Te[-1] right
-        expTe_dsa_func = interp1d(dsa_TSprofile, teexp)
+        expTe_dsa_func = interp1d(dsa_TSprofile, teexp, fill_value = 'extrapolate')
         te_decay_len = (expTe_dsa_func(dsa[-2]) - expTe_dsa_func(dsa[-1])) / \
             np.mean([expTe_dsa_func(dsa[-1]), expTe_dsa_func(dsa[-2])])
         if verbose: print('Te_decay_len = ' + str(te_decay_len))
