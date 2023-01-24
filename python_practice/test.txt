@@ -1,5 +1,0 @@
-1) This is a test file
-2) with multiple line of data ...
-3) third line
-4) fourth line
-5) fifth line
