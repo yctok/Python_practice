@@ -309,7 +309,9 @@ def loadg(filename):
              qpsi=np.array(qpsi), nbbbs=nbbbs, bcentr=bcentr,
              pres=np.array(pres), limitr=limitr, rbdry=np.array(rbdry),
              zbdry=np.array(zbdry), rlim=np.array(rlim), zlim=np.array(zlim))
-
+    
+    #from IPython import embed; embed() 
+    
     return g
 
 
