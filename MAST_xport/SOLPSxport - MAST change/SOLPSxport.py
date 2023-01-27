@@ -626,7 +626,7 @@ class SOLPSxport:
         self.data['solpsData']['dsa'] = np.array(dsa)
         self.data['solpsData']['psiSOLPS'] = np.array(psi_solps)
         
-        #from IPython import embed; embed()
+        from IPython import embed; embed()
 
         if plotit:
             psiN_range = [np.min(psi_solps), np.max(psi_solps)]
