@@ -131,7 +131,7 @@ we run fullname() function from class: Employee.fullname(emp_1) and reach the sa
 
 """
 
-# class Employee():
+# class Employee:
     
 #     def __init__(self, first, last, pay):
 #         self.first = first
@@ -197,7 +197,7 @@ __init__ method can help us to count the number of employee
 
 """
 
-# class Employee():
+# class Employee:
 #     num_of_emps = 0
 #     raise_rate = 1.04
     
@@ -287,7 +287,7 @@ If we do not pass in an instance or a class as a variable in a method we written
     
 """
 
-# class Employee():
+# class Employee:
 #     num_of_emps = 0
 #     raise_amount = 1.04
     
@@ -365,12 +365,15 @@ Example problem:
 "Tutorial 4: Inheritance - Creating Subclasses"
 
 """
-The reason to create subclasses is to
+The reason to create subclasses is to inherit functions from its parent class
+
+Put the parent class inherited from in the parenthesis after the name of the subclass
+
 
 """
 
-class Employee():
-    num_of_emps = 0
+class Employee:
+    
     raise_amount = 1.04
     
     def __init__(self, first, last, pay):
@@ -379,17 +382,23 @@ class Employee():
         self.pay = pay
         self.email = first + '_' + last + '@w&m.com'
         
-        Employee.num_of_emps += 1
     
     def fullname(self):
         return '{} {}'.format(self.first, self.last)
     
     def apply_raise(self):
         self.pay = int(self.pay * self.raise_amt)
+        
+class Developer(Employee):
+    pass
     
         
-emp_1 = Employee('Corey', 'Schafer', 50000)
-emp_2 = Employee('Yi-Cheng', 'Chuang', 40000)
+dev_1 = Employee('Corey', 'Schafer', 50000)
+dev_2 = Employee('Yi-Cheng', 'Chuang', 40000)
+
+print(dev_1.email)
+print(dev_2.email)
+
 
 
 
