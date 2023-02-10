@@ -626,7 +626,7 @@ class SOLPSxport:
         self.data['solpsData']['dsa'] = np.array(dsa)
         self.data['solpsData']['psiSOLPS'] = np.array(psi_solps)
         
-        from IPython import embed; embed()
+        #from IPython import embed; embed()
 
         if plotit:
             psiN_range = [np.min(psi_solps), np.max(psi_solps)]
@@ -794,10 +794,10 @@ class SOLPSxport:
     # ----------------------------------------------------------------------------------------
     
     def calcXportCoef(self, plotit = True, Dn_min = 0.001, chie_min = 0.01, chii_min = 0.01,
-                      Dn_max = 100, chie_max = 400, chii_max = 400, vrc_mag=0.0, ti_decay_len = 0.015,
+                      Dn_max = 100, chie_max = 400, chii_max = 400, vrc_mag=0.0, ti_decay_len = None,
                       reduce_Ti_fileloc = None,
                       fractional_change = 1, exp_prof_rad_shift = 0, chii_eq_chie = False,
-                      use_ratio_bc = True, debug_plots = False, verbose = False, figblock = False):
+                      use_ratio_bc = True, debug_plots = True, verbose = True, figblock = False):
         """
         Calculates the transport coefficients to be written into b2.transport.inputfile
         
@@ -858,7 +858,7 @@ class SOLPSxport:
         
         dsa_TSprofile = psi_to_dsa_func(psi_data_fit)
 
-        #from IPython import embed; embed()
+        
 
         gnold_dsa = np.gradient(neold) / np.gradient(dsa)  # Only used for dnew_ratio
         gnexp_dsa = np.gradient(neexp) / np.gradient(dsa_TSprofile)
@@ -868,10 +868,10 @@ class SOLPSxport:
         # so gnexp_dsafunc shouldn't be applied outside that
         gnexp_solpslocs_dsa = gnexp_dsafunc(dsa)
         
-        
+        #from IPython import embed; embed()
         
         # Set boundary condition to get ne[-1] right
-        expden_dsa_func = interp1d(dsa_TSprofile, neexp, fill_value = 'extrapolate')
+        expden_dsa_func = interp1d(dsa_TSprofile, neexp, kind = 'cubic', fill_value = 'extrapolate')
         den_decay_len = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
             np.mean([expden_dsa_func(dsa[-1]), expden_dsa_func(dsa[-2])])
         if verbose: print('den_decay_len = ' + str(den_decay_len))
@@ -1027,10 +1027,12 @@ class SOLPSxport:
 
         if debug_plots:
             plt.figure()
-            plt.plot(psi_solps, gtiexp_solpslocs / 1e3, label='gtiexp_solpslocs')
-            plt.plot(psi_solps, gtiold / 1e3, label='gtiold')
-            plt.plot(psi_solps, gteexp_solpslocs / 1e3, '--', lw=2, label='gteexp_solpslocs')
-            plt.plot(psi_solps, gteold / 1e3, '--', lw=2, label='gteold')
+            #plt.plot(psi_solps, gtiexp_solpslocs / 1e3, label='gtiexp_solpslocs')
+            plt.plot(psi_solps, dnew_ratio, label= 'dnew_ratio')
+            plt.plot(psi_solps, dnew_flux, label = 'dnew_flux')
+            #plt.plot(psi_solps, gtiold / 1e3, label='gtiold')
+            #plt.plot(psi_solps, gteexp_solpslocs / 1e3, '--', lw=2, label='gteexp_solpslocs')
+            #plt.plot(psi_solps, gteold / 1e3, '--', lw=2, label='gteold')
             plt.xlabel('$\psi_N$')
             plt.ylabel('$\\nabla$T / $\\nabla\psi_N$')
             plt.legend(loc='best')
