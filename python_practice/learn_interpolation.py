@@ -5,6 +5,13 @@ Created on Wed Jan 25 21:53:19 2023
 @author: user
 """
 
+"""
+"How To Interpolate Data In Python"
+
+from Youtube Mr. P Solver, https://www.youtube.com/watch?v=nGwg5MrbZxo&t=298s
+
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
@@ -27,17 +34,43 @@ then y= f(x) = connecting of straight lines
 x_data = np.linspace(0,5,5)
 y_data = x_data**2
 
-plt.scatter(x_data, y_data)
-plt.show()
+# plt.scatter(x_data, y_data)
+# plt.show()
 
 "Picture linear interpolation as a plot"
 
-plt.plot(x_data, y_data, 'o--')
-plt.show()
+# plt.plot(x_data, y_data, 'o--')
+# plt.show()
 
 "make a interpolation function"
 "*y_f is a function, give an x, it will return the interpolate y value"
 
-y_f = interp1d(x_data, y_data, 'linear')
-y_new = y_f(1.5)
-print(y_new)
+# y_f = interp1d(x_data, y_data, 'linear')
+# y_new = y_f(1.5)
+# print(y_new)
+
+"Obtain y values for many x values"
+
+# x = np.linspace(0,5,100)
+# y = y_f(x)
+
+# plt.scatter(x,y)
+# plt.show()
+
+"""
+To interpolate a smooth curve, it is better to use cubic interpolation
+
+Cubic interpolation fit data to cubic polynomials and connect them together
+
+
+"""
+
+y_f = interp1d(x_data, y_data, 'cubic')
+x = np.linspace(0,5,100)
+y = y_f(x)
+
+plt.scatter(x,y)
+plt.show()
+
+
+
