@@ -6,7 +6,11 @@ Created on Wed Feb 22 15:33:01 2023
 """
 
 import numpy as np
+import argparse
 
+parser = argparse.ArgumentParser(description='load mast data')
+parser.add_argument('-d', '--mastfile_loc', type=str, default=None, help='location of profs_*.pkl saved profile file')
+args = parser.parse_args()
 
 def read_mastfile(mastfile_loc):
     with open(mastfile_loc, mode='r') as dfile:
@@ -14,7 +18,6 @@ def read_mastfile(mastfile_loc):
     
     profiles = {}
     nlines_tot = len(lines)
-    
     psi_n = np.zeros(nlines_tot)
     ne = np.zeros(nlines_tot)
     te = np.zeros(nlines_tot)
@@ -32,8 +35,5 @@ def read_mastfile(mastfile_loc):
     profiles['electron_temperature(KeV)'] = te
     return profiles
 
-
-
-with open('yag_27205_275.dat','r') as f:
-    for line in f:
-        print(line, end='')
+if __name__ == '__main__':
+    result = read_mastfile(args.mastfile_loc)
