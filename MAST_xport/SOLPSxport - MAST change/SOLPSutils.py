@@ -392,7 +392,6 @@ def read_mastfile(mastfile_loc):
     
     profiles = {}
     nlines_tot = len(lines)
-    
     psi_n = np.zeros(nlines_tot)
     ne = np.zeros(nlines_tot)
     te = np.zeros(nlines_tot)
