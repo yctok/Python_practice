@@ -400,8 +400,8 @@ def read_mastfile(mastfile_loc):
     while i < nlines_tot:
         r_line = lines[i].split()
         psi_n[i] = float(r_line[0])
-        ne[i] = float(r_line[1])*pow(10, -20)
-        te[i] = float(r_line[3])/1000
+        ne[i] = float(r_line[1])
+        te[i] = float(r_line[3])
         i += 1
 
     profiles['psi_normal'] = psi_n
