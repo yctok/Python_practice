@@ -627,7 +627,7 @@ class SOLPSxport:
         self.data['solpsData']['dsa'] = np.array(dsa)
         self.data['solpsData']['psiSOLPS'] = np.array(psi_solps)
         
-        from IPython import embed; embed()
+        #from IPython import embed; embed()
 
         if plotit:
             psiN_range = [np.min(psi_solps), np.max(psi_solps)]
@@ -873,9 +873,15 @@ class SOLPSxport:
         
         # Set boundary condition to get ne[-1] right
         expden_dsa_func = interp1d(dsa_TSprofile, neexp, fill_value = 'extrapolate')
+        
+        
+        
         den_decay_len = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
             np.mean([expden_dsa_func(dsa[-1]), expden_dsa_func(dsa[-2])])
         if verbose: print('den_decay_len = ' + str(den_decay_len))
+        
+        from IPython import embed; embed()
+        
         gnexp_solpslocs_dsa[-1] = -expden_dsa_func(dsa[-1]) / den_decay_len
 
         # this method assumes no convective transport (ok in some cases)
