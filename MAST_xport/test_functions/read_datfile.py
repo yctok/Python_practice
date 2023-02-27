@@ -74,48 +74,48 @@ rfind(): return the position of the last substring found in the string
 # print(check_shotnum('g027205.00275_efitpp'))    
 
 
-import numpy as np
-import SOLPSutils as sut
+# import numpy as np
+# import SOLPSutils as sut
 
-def calcPsiVals(gfile_loc, shift):
-    """
-    Call b2plot to get the locations of each grid cell in psin space
+# def calcPsiVals(gfile_loc, shift):
+#     """
+#     Call b2plot to get the locations of each grid cell in psin space
 
-    Saves the values to dictionaries in self.data['solpsData']
-    """
+#     Saves the values to dictionaries in self.data['solpsData']
+#     """
 
-    """
-    Find grid corners first:
-      0: lower left
-      1: lower right
-      2: upper left
-      3: upper right
+#     """
+#     Find grid corners first:
+#       0: lower left
+#       1: lower right
+#       2: upper left
+#       3: upper right
 
-    Average location of cells 0 and 2 for middle of 'top' surface, 
-    which is the top looking at outboard midplane
-    Don't average over whole cell, dR << dZ at outboard midplane 
-    and surface has curvature, so psin will be low
+#     Average location of cells 0 and 2 for middle of 'top' surface, 
+#     which is the top looking at outboard midplane
+#     Don't average over whole cell, dR << dZ at outboard midplane 
+#     and surface has curvature, so psin will be low
 
-    jxa = poloidal cell index for the outer midplane
-    crx = radial coordinate corner of grid [m]
-    cry = vertical coordinate corner of grid [m]
-    writ = write b2plot.write file
-    f.y = plot against y
-    """
-    g = sut.loadg(gfile_loc)
-    d = float(shift)
+#     jxa = poloidal cell index for the outer midplane
+#     crx = radial coordinate corner of grid [m]
+#     cry = vertical coordinate corner of grid [m]
+#     writ = write b2plot.write file
+#     f.y = plot against y
+#     """
+#     g = sut.loadg(gfile_loc)
+#     d = float(shift)
     
-    dR = g['rdim'] / (g['nw'] - 1)
-    gR = []
-    for i in range(g['nw']):
-        gR.append(g['rleft'] + i * dR + d)
+#     dR = g['rdim'] / (g['nw'] - 1)
+#     gR = []
+#     for i in range(g['nw']):
+#         gR.append(g['rleft'] + i * dR + d)
 
-    gR = np.array(gR)
-    return gR
+#     gR = np.array(gR)
+#     return gR
 
-if __name__ == '__main__':
-    radius_cor = calcPsiVals('g027205.00275_efitpp',0)
-    m_cor = calcPsiVals('g027205.00275_efitpp',1)
+# if __name__ == '__main__':
+#     radius_cor = calcPsiVals('g027205.00275_efitpp',0)
+#     m_cor = calcPsiVals('g027205.00275_efitpp',1)
 
 
 
