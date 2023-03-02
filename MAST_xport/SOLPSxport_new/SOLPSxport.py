@@ -1133,14 +1133,14 @@ class SOLPSxport:
         gteold = np.gradient(teold) / np.gradient(dsa)
         gteexp = np.gradient(teexp) / np.gradient(dsa_teprofile)
 
-        gteexp_dsafunc = interpolate.interp1d(dsa_teprofile, gteexp, kind='cubic', fill_value = 'extrapolate')
+        gteexp_dsafunc = interpolate.interp1d(dsa_teprofile, gteexp, kind='linear', fill_value = 'extrapolate')
         gteexp_solpslocs = gteexp_dsafunc(dsa)
         if (np.max(gteexp_solpslocs) > 0):
             print("WARNING: Positive Te gradient found at dsa =",dsa[np.argmax(gteexp_solpslocs)])
             print("         Modify fits or min chie value will be used here")
                 
         # Set boundary condition to get Te[-1] right
-        expTe_dsa_func = interpolate.interp1d(dsa_teprofile, teexp, kind='cubic', fill_value = 'extrapolate')
+        expTe_dsa_func = interpolate.interp1d(dsa_teprofile, teexp, kind='linear', fill_value = 'extrapolate')
         te_decay_len_end = (expTe_dsa_func(dsa[-2]) - expTe_dsa_func(dsa[-1])) / \
             np.mean([expTe_dsa_func(dsa[-1]), expTe_dsa_func(dsa[-2])])
         
@@ -1202,6 +1202,9 @@ class SOLPSxport:
 
         kinew_ratio[0] = kinew_ratio[1]   # guard cells
         kinew_flux[0] = kinew_flux[1]
+        
+        from IPython import embed; embed()
+        
 
         if fractional_change != 1:
             dnew_ratio = dnew_ratio * fractional_change + dold * (1 - fractional_change)
