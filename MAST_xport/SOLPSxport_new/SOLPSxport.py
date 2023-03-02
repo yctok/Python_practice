@@ -1144,7 +1144,6 @@ class SOLPSxport:
         te_decay_len_end = (expTe_dsa_func(dsa[-2]) - expTe_dsa_func(dsa[-1])) / \
             np.mean([expTe_dsa_func(dsa[-1]), expTe_dsa_func(dsa[-2])])
         
-        from IPython import embed; embed()
         
         if verbose: print('Te_decay_len = ' + str(te_decay_len))
         gteexp_solpslocs[-1] = -expTe_dsa_func(dsa[-1]) / te_decay_len_end
