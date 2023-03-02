@@ -8,7 +8,6 @@ Created on Sun Feb 26 23:33:53 2023
 import matplotlib.pyplot as plt
 from scipy import interpolate
 import numpy as np
-import test_fit as tf
 
 psi_solps = [0.56591402, 0.59635553, 0.65365526, 0.70507622, 0.75083496,
        0.79132874, 0.82698182, 0.85806206, 0.88490369, 0.90789432,
@@ -27,6 +26,10 @@ dsa = [-0.10817856, -0.09990042, -0.08461333, -0.07136643, -0.05987293,
         0.00779984,  0.00900968,  0.01022689,  0.01144393,  0.01266685,
         0.01389157,  0.01511209,  0.01633297,  0.01755502,  0.01877859,
         0.02000397,  0.02123034,  0.02184967]
+
+plt.figure(1)
+plt.plot(psi_solps, dsa, color='r')
+plt.show()
 
 def read_fitfile(fitfile_loc):
     with open(fitfile_loc, mode='r') as dfile:
@@ -54,17 +57,43 @@ def read_fitfile(fitfile_loc):
 
 fit_dat_dict = read_fitfile('fit_27205_275.dat')
 teexppsi = fit_dat_dict['psi_normal']
+neexppsi = fit_dat_dict['psi_normal']
+neexp = fit_dat_dict['electron_density(m^3)']
 teexp = fit_dat_dict['electron_temperature(eV)']
 
 
+#check electron density
+
+psi_to_dsa_func = interpolate.interp1d(psi_solps, dsa, fill_value = 'extrapolate')
+dsa_neprofile = psi_to_dsa_func(neexppsi)
+
+plt.figure(2)
+plt.plot(neexppsi, dsa_neprofile, color='r')
+plt.show()
+
+gnexp = np.gradient(neexp) / np.gradient(dsa_neprofile)
+
+gnexp_dsafunc = interpolate.interp1d(dsa_neprofile, gnexp, kind='cubic', fill_value = 'extrapolate')
+gnexp_solpslocs = gnexp_dsafunc(dsa)
+
+plt.figure(3)
+plt.plot(dsa_neprofile, gnexp, color='r')
+plt.show()
+
+expden_dsa_func = interpolate.interp1d(dsa_neprofile, neexp, kind='cubic', fill_value = 'extrapolate')
+
+ne_decay_len_end = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
+    np.mean([expden_dsa_func(dsa[-1]), expden_dsa_func(dsa[-2])])
+
+print(ne_decay_len_end)
 
 
-#
+# Check electron temperature
 
 psi_to_dsa_func = interpolate.interp1d(psi_solps, dsa, fill_value = 'extrapolate')
 dsa_teprofile = psi_to_dsa_func(teexppsi)
 
-plt.figure(1)
+plt.figure(4)
 plt.plot(teexppsi, dsa_teprofile, color='r')
 plt.show()
 
@@ -73,7 +102,7 @@ gteexp = np.gradient(teexp) / np.gradient(dsa_teprofile)
 gteexp_dsafunc = interpolate.interp1d(dsa_teprofile, gteexp, kind='linear', fill_value = 'extrapolate')
 gteexp_solpslocs = gteexp_dsafunc(dsa)
 
-plt.figure(2)
+plt.figure(5)
 plt.plot(dsa, gteexp_solpslocs, color='r')
 plt.show()
 
