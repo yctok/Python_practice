@@ -1083,7 +1083,6 @@ class SOLPSxport:
         gnexp_dsafunc = interpolate.interp1d(dsa_neprofile, gnexp, kind='cubic', fill_value = 'extrapolate')
         gnexp_solpslocs = gnexp_dsafunc(dsa)
         
-        from IPython import embed; embed()
         
         if (np.max(gnexp_solpslocs) > 0):
             print("WARNING: Positive n gradient found at dsa =",dsa[np.argmax(gnexp_solpslocs)])
@@ -1144,7 +1143,9 @@ class SOLPSxport:
         expTe_dsa_func = interpolate.interp1d(dsa_teprofile, teexp, kind='cubic', fill_value = 'extrapolate')
         te_decay_len_end = (expTe_dsa_func(dsa[-2]) - expTe_dsa_func(dsa[-1])) / \
             np.mean([expTe_dsa_func(dsa[-1]), expTe_dsa_func(dsa[-2])])
-            
+        
+        from IPython import embed; embed()
+        
         if verbose: print('Te_decay_len = ' + str(te_decay_len))
         gteexp_solpslocs[-1] = -expTe_dsa_func(dsa[-1]) / te_decay_len_end
         
