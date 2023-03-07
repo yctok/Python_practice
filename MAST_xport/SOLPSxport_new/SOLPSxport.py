@@ -1080,7 +1080,7 @@ class SOLPSxport:
         gnold = np.gradient(neold) / np.gradient(dsa)  # Only used for dnew_ratio
         gnexp = np.gradient(neexp) / np.gradient(dsa_neprofile)
 
-        gnexp_dsafunc = interpolate.interp1d(dsa_neprofile, gnexp, kind='cubic', fill_value = 'extrapolate')
+        gnexp_dsafunc = interpolate.interp1d(dsa_neprofile, gnexp, kind='quadratic', fill_value = 'extrapolate')
         gnexp_solpslocs = gnexp_dsafunc(dsa)
         
         
@@ -1093,7 +1093,7 @@ class SOLPSxport:
         gnexp_solpslocs_dsa = gnexp_dsafunc(dsa)
 
         # Set boundary condition to get ne[-1] right
-        expden_dsa_func = interpolate.interp1d(dsa_neprofile, neexp, kind='cubic', fill_value = 'extrapolate')
+        expden_dsa_func = interpolate.interp1d(dsa_neprofile, neexp, kind='quadratic', fill_value = 'extrapolate')
 
         ne_decay_len_end = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
             np.mean([expden_dsa_func(dsa[-1]), expden_dsa_func(dsa[-2])])
