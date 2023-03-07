@@ -334,8 +334,8 @@ def increment_run(gfile_loc, new_filename = 'b2.transport.inputfile_new',
                   profiles_fileloc = None, shotnum = None, ptimeid = None, prunid = None,
                   use_existing_last10 = False, chie_use_grad = False, chii_use_grad = False,
                   new_b2xportparams = True, td_fileloc = None, reduce_Ti_fileloc = None,
-                  impurity_list=['c'], plotall = False, plot_xport_coeffs = True,
-                  ntim_new = 100, dtim_new = '1.0e-6', Dn_min = 0.0005):
+                  impurity_list=[ ], plotall = False, plot_xport_coeffs = True,
+                  ntim_new = 50, dtim_new = '4.0e-5', Dn_min = 0.0005):
     """
     This routine runs the main calculation of transport coefficients, then saves the old
     b2.transport.inputfile, b2.transport.parameters and b2fstati files with the iteration
