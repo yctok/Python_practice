@@ -73,14 +73,14 @@ plt.show()
 
 gnexp = np.gradient(neexp) / np.gradient(dsa_neprofile)
 
-gnexp_dsafunc = interpolate.interp1d(dsa_neprofile, gnexp, kind='cubic', fill_value = 'extrapolate')
+gnexp_dsafunc = interpolate.interp1d(dsa_neprofile, gnexp, kind='linear', fill_value = 'extrapolate')
 gnexp_solpslocs = gnexp_dsafunc(dsa)
 
 plt.figure(3)
-plt.plot(dsa_neprofile, gnexp, color='r')
+plt.plot(dsa, gnexp_solpslocs, color='r')
 plt.show()
 
-expden_dsa_func = interpolate.interp1d(dsa_neprofile, neexp, kind='cubic', fill_value = 'extrapolate')
+expden_dsa_func = interpolate.interp1d(dsa_neprofile, neexp, kind='linear', fill_value = 'extrapolate')
 
 ne_decay_len_end = (expden_dsa_func(dsa[-2]) - expden_dsa_func(dsa[-1])) / \
     np.mean([expden_dsa_func(dsa[-1]), expden_dsa_func(dsa[-2])])
