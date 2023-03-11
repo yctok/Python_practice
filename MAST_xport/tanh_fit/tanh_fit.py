@@ -46,7 +46,7 @@ if __name__ == '__main__':
     te = mast_dat_dict['electron_temperature(KeV)']
     
     ne_fit = mf.super_fit_osbourne(psi, ne, maxfev=400)
-    ne_superfit = mf.best_osbourne(psi, ne, plot=True)
+    ne_superfit = mf.best_osbourne(psi, ne)
     
     plt.figure(1)
     plt.plot(psi, ne_fit[0], color='r', label= 'electron density fit')
