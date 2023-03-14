@@ -689,7 +689,7 @@ class SOLPSxport:
 
     # ----------------------------------------------------------------------------------------
 
-    def calcPsiVals(self, plotit = False, dsa = None, b2mn = None, geo = None, verbose=True):
+    def calcPsiVals(self, plotit = False, dsa = None, b2mn = None, geo = None, verbose=True, shift=0):
         """
         Call b2plot to get the locations of each grid cell in psin space
 
@@ -748,6 +748,7 @@ class SOLPSxport:
         ncells = len(czLowerLeft)
 
         g = sut.loadg(self.data['gfile_loc'])
+        d = float(shift)
         psiN = (g['psirz'] - g['simag']) / (g['sibry'] - g['simag'])
 
         dR = g['rdim'] / (g['nw'] - 1)
@@ -755,7 +756,7 @@ class SOLPSxport:
 
         gR = []
         for i in range(g['nw']):
-            gR.append(g['rleft'] + i * dR)
+            gR.append(g['rleft'] + i * dR + d)
 
         gZ = []
         for i in range(g['nh']):
@@ -779,6 +780,8 @@ class SOLPSxport:
         self.data['solpsData']['czLowerLeft'] = np.array(czLowerLeft)
         self.data['solpsData']['dsa'] = np.array(dsa)
         self.data['solpsData']['psiSOLPS'] = np.array(psi_solps)
+
+        from IPython import embed; embed()
 
         if plotit:
             psiN_range = [np.min(psi_solps), np.max(psi_solps)]
@@ -1202,7 +1205,7 @@ class SOLPSxport:
         kinew_ratio[0] = kinew_ratio[1]   # guard cells
         kinew_flux[0] = kinew_flux[1]
         
-        from IPython import embed; embed()
+        #from IPython import embed; embed()
         
 
         if fractional_change != 1:
