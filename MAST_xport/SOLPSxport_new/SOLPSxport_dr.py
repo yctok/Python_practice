@@ -94,7 +94,7 @@ def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
          impurity_list = [], use_existing_last10=False, plot_xport_coeffs=True,
          plotall=False, verbose=False, figblock=False,
          ti_decay_len=0.015, te_decay_len = None, ne_decay_len = None,
-         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e18):
+         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e18, shift= 1):
     """
     Driver for the code, returns an object of class 'SOLPSxport'
 
@@ -144,6 +144,8 @@ def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
       plotall           Produce a bunch more plots from the subroutines used in the process
       verbose           Set to True to print a lot more outputs to terminal
       figblock          Set to True if calling from command line and you want to see figures
+      shift             Set the amount of shifting the major radius
+      
     Returns:
       Object of class 'SOLPSxport', which can then be used to plot, recall, or modify the saved data
       and rewrite a new b2.transport.inputfile
@@ -194,7 +196,7 @@ def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
         
     print("Running calcPsiVals")
     try:
-        xp.calcPsiVals(plotit=plotall,geo=geo,b2mn=b2mn,dsa=dsa)
+        xp.calcPsiVals(plotit=plotall,geo=geo,b2mn=b2mn,dsa=dsa,shift=shift)
     except Exception as err:
         print('Exiting from SOLPSxport_dr\n')
         sys.exit(err)
@@ -306,6 +308,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--tdfileloc', help='File location for TD; default = None', type=str, default=None)
     parser.add_argument('-f', '--fractional_change', help='Fractional change to transport coefficients; default = 1',
                         type=float, default=1)
+    parser.add_argument('-sh', '--shift', help='shift of major radius; default = 1', type=float, default=1)
     if py3_9:
         parser.add_argument('--chii_eq_chie', action='store_true', default=False)
         # parser.set_defaults(chii_eq_chie=False)
@@ -325,17 +328,24 @@ if __name__ == '__main__':
              shotnum=args.shotnum, ptimeid=args.timeid, prunid=args.runid,
              ti_fileloc=args.tdfileloc,
              chii_eq_chie=args.chii_eq_chie, chie_use_grad=args.chie_use_grad, chii_use_grad=args.chii_use_grad,
-             reduce_Ti_fileloc=args.tiratiofile, fractional_change=args.fractional_change, figblock=True)
+             reduce_Ti_fileloc=args.tiratiofile, fractional_change=args.fractional_change, figblock=True, shift=args.shift)
 
 # ----------------------------------------------------------------------------------------
 
 
-def increment_run(gfile_loc, new_filename = 'b2.transport.inputfile_new',
-                  profiles_fileloc = None, shotnum = None, ptimeid = None, prunid = None,
-                  use_existing_last10 = False, chie_use_grad = False, chii_use_grad = False,
-                  new_b2xportparams = True, td_fileloc = None, reduce_Ti_fileloc = None,
-                  impurity_list=[ ], plotall = False, plot_xport_coeffs = True,
-                  ntim_new = 50, dtim_new = '4.0e-5', Dn_min = 0.0005):
+def increment_run(gfile_loc = None, new_filename='b2.transport.inputfile_new',
+         profiles_fileloc= None, shotnum= None, ptimeid= None, prunid= None,
+         nefit='tanh', tefit='tanh', ncfit='spl', chii_eq_chie = False,  # ti_eq_te = False,
+         vrc_mag=0.0, Dn_max=200,
+         chie_use_grad = False, chii_use_grad = False, new_b2xportparams = True,
+         chie_min = 0.01, chii_min = 0.01, chie_max = 400, chii_max = 400,
+         reduce_Ti_fileloc = None, update_old_last10s = False,
+         fractional_change = 1, exp_prof_rad_shift = 0, ti_fileloc = None,
+         impurity_list = [], use_existing_last10=False, plot_xport_coeffs=True,
+         plotall=False, verbose=False, figblock=False,
+         ti_decay_len=0.015, te_decay_len = None, ne_decay_len = None,
+         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e18, shift= 1,
+         ntim_new = 50, dtim_new = '4.0e-5', Dn_min = 0.0005):
     """
     This routine runs the main calculation of transport coefficients, then saves the old
     b2.transport.inputfile, b2.transport.parameters and b2fstati files with the iteration
@@ -350,9 +360,9 @@ def increment_run(gfile_loc, new_filename = 'b2.transport.inputfile_new',
               profiles_fileloc = profiles_fileloc, shotnum = shotnum, ptimeid = ptimeid,
               prunid = prunid, Dn_min = Dn_min, use_existing_last10 = use_existing_last10,
               chie_use_grad=chie_use_grad, chii_use_grad=chii_use_grad,
-              new_b2xportparams=new_b2xportparams, update_old_last10s=True, ti_fileloc=td_fileloc,
-              reduce_Ti_fileloc = reduce_Ti_fileloc, impurity_list=impurity_list, plotall = plotall,
-              plot_xport_coeffs = plot_xport_coeffs, verbose=False, figblock=False)
+              new_b2xportparams=new_b2xportparams, update_old_last10s=True,
+              reduce_Ti_fileloc = reduce_Ti_fileloc, impurity_list= impurity_list, plotall = plotall,
+              plot_xport_coeffs = plot_xport_coeffs, verbose=False, figblock=False, shift= shift)
     
     allfiles = os.listdir('.')
     all_incs = [int(i[22:]) for i in allfiles if i[:22] == 'b2.transport.inputfile' and
