@@ -25,4 +25,6 @@ parser.add_argument('-sh', '--shift', help='shift of major radius; default = 1',
 args = parser.parse_args()
 
 if __name__ == '__main__':
-    sd.increment_run(gfile_loc=args.gfileloc, profiles_fileloc=args.profilesloc)
+    sd.increment_run(gfile_loc=args.gfileloc, profiles_fileloc=args.profilesloc,
+             shotnum=args.shotnum, ptimeid=args.timeid, prunid=args.runid,
+             ti_fileloc=args.tdfileloc,fractional_change=args.fractional_change, figblock=True, shift=args.shift)
