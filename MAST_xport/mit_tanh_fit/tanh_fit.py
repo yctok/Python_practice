@@ -9,8 +9,6 @@ import numpy as np
 import argparse
 import mtanh_fitting as mf
 import matplotlib.pyplot as plt
-from scipy.optimize import curve_fit
-from scipy import interpolate
 from scipy.interpolate import interp1d
 
 parser = argparse.ArgumentParser(description='load MAST data file')
@@ -46,6 +44,7 @@ if __name__ == '__main__':
     psi = mast_dat_dict['psi_normal']
     ne = mast_dat_dict['electron_density(10^20/m^3)']
     te = mast_dat_dict['electron_temperature(KeV)']
+    
     
     ne_f = interp1d(psi, ne, kind= 'quadratic')
     te_f = interp1d(psi, te, kind= 'quadratic')
