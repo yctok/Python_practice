@@ -39,14 +39,14 @@ def read_mastfile(mastfile_loc):
     return profiles
 
 if __name__ == '__main__':
-    n_tot = 600
+    n_tot = 60
     mast_dat_dict = read_mastfile(args.mastfile_loc)
     psi = mast_dat_dict['psi_normal']
     ne = mast_dat_dict['electron_density(10^20/m^3)']
     te = mast_dat_dict['electron_temperature(KeV)']
     
     
-    ne_f = interp1d(psi, ne, kind= 'quadratic')
+    ne_f = interp1d(psi, ne, kind= 'linear')
     te_f = interp1d(psi, te, kind= 'quadratic')
     
     x_model = np.linspace(min(psi), max(psi), n_tot)
@@ -84,18 +84,18 @@ if __name__ == '__main__':
 
     plt.show()
     
-    w_datalist = []   
-    for j in range(n_tot):
-        w_list =[]
-        w_list.append("{: .6f}".format(x_model[j]))
-        w_list.append("{: .6f}".format(ne_fit[0][j]))
-        w_list.append("{: .6f}".format(te_fit[0][j]))
-        w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
-        w_datalist.append(w_writelist)
+    # w_datalist = []   
+    # for j in range(n_tot):
+    #     w_list =[]
+    #     w_list.append("{: .6f}".format(x_model[j]))
+    #     w_list.append("{: .6f}".format(ne_fit[0][j]))
+    #     w_list.append("{: .6f}".format(te_fit[0][j]))
+    #     w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
+    #     w_datalist.append(w_writelist)
    
-    with open('fit_27205_275.dat', 'w') as f:
-        for l,w_line in enumerate(w_datalist):   
-            f.writelines(w_line + "\n")
+    # with open('fit_27205_275.dat', 'w') as f:
+    #     for l,w_line in enumerate(w_datalist):   
+    #         f.writelines(w_line + "\n")
 
     
     
