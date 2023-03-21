@@ -1205,7 +1205,7 @@ class SOLPSxport:
         kinew_ratio[0] = kinew_ratio[1]   # guard cells
         kinew_flux[0] = kinew_flux[1]
         
-        #from IPython import embed; embed()
+        from IPython import embed; embed()
         
 
         if fractional_change != 1:
