@@ -39,9 +39,14 @@ def read_mastfile(mastfile_loc):
     return profiles
 
 if __name__ == '__main__':
+<<<<<<< HEAD
     n_tot = 60
+=======
+    n_tot = 200
+>>>>>>> 462685ae194c78367980bb98865ab22ed6ada083
     mast_dat_dict = read_mastfile(args.mastfile_loc)
     psi = mast_dat_dict['psi_normal']
+    size = len(psi)
     ne = mast_dat_dict['electron_density(10^20/m^3)']
     te = mast_dat_dict['electron_temperature(KeV)']
     
@@ -52,18 +57,45 @@ if __name__ == '__main__':
     x_model = np.linspace(min(psi), max(psi), n_tot)
     
     
-    ne_fit = mf.super_fit_osbourne(x_model, ne_f(x_model))
-    ne_superfit = mf.best_osbourne(x_model, ne_f(x_model))
-    
-    te_fit = mf.super_fit_osbourne(x_model, te_f(x_model))
-    te_superfit = mf.best_osbourne(x_model, te_f(x_model))
+    # ne_fit = mf.super_fit_osbourne(psi, ne)
+    # ne_superfit = mf.best_osbourne(psi, ne)
     
     # te_fit = mf.super_fit_osbourne(psi, te)
     # te_superfit = mf.best_osbourne(psi, te)
     
+    ne_pop = mf.super_fit_osbourne(x_model, ne_f(x_model))
+    ne_superpop = mf.best_osbourne(x_model, ne_f(x_model))
+    
+    te_pop = mf.super_fit_osbourne(x_model, te_f(x_model))
+    te_superpop = mf.best_osbourne(x_model, te_f(x_model))
+    
+    
+    # plt.figure(1)
+    # plt.plot(psi, ne_fit[0], color='r', label= 'electron density fit')
+    # plt.plot(psi, ne_superfit[0], color='r', label= 'electron density fit')
+    # plt.scatter(psi, ne, label= 'electron density experiment data')
+    
+    # plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    # plt.ylabel('Electron density: ${n_e}$ (m$^{-3}$)', fontdict={"family":"Times New Roman","size": 20})
+    # plt.title('Electron density',fontdict={"family":"Times New Roman","size": 20})
+    # plt.legend()
+    
+    
+    
+    # plt.figure(2)
+    # plt.plot(psi, te_fit[0], color='r', label= 'electron density fit')
+    # plt.plot(psi, te_superfit[0], color='r', label= 'electron density fit')
+    # plt.scatter(psi, te, label= 'electron density experiment data')
+    
+    # plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    # plt.ylabel('Electron temperature: ${T_e}$ (eV)', fontdict={"family":"Times New Roman","size": 20})
+    # plt.title('Electron temperature',fontdict={"family":"Times New Roman","size": 20})
+    # plt.legend()
+    
     
     plt.figure(1)
-    plt.plot(x_model, ne_fit[0], color='r', label= 'electron density fit')
+    plt.plot(x_model, ne_pop[0], color='r', label= 'electron density fit')
+    plt.plot(x_model, ne_superpop[0], color='g', label= 'electron density super fit')
     plt.scatter(psi, ne, label= 'electron density experiment data')
     
     plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
@@ -74,8 +106,9 @@ if __name__ == '__main__':
     
     
     plt.figure(2)
-    plt.plot(x_model, te_fit[0], color='r', label= 'electron density fit')
-    plt.scatter(psi, te, label= 'electron density experiment data')
+    plt.plot(x_model, te_pop[0], color='r', label= 'electron temperature fit')
+    plt.plot(x_model, te_superpop[0], color='g', label= 'electron temperature super fit')
+    plt.scatter(psi, te, label= 'electron temperature experiment data')
     
     plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
     plt.ylabel('Electron temperature: ${T_e}$ (eV)', fontdict={"family":"Times New Roman","size": 20})
@@ -85,17 +118,43 @@ if __name__ == '__main__':
     plt.show()
     
     # w_datalist = []   
+<<<<<<< HEAD
     # for j in range(n_tot):
     #     w_list =[]
     #     w_list.append("{: .6f}".format(x_model[j]))
+=======
+    # for j in range(size):
+    #     w_list =[]
+    #     w_list.append("{: .6f}".format(psi[j]))
+>>>>>>> 462685ae194c78367980bb98865ab22ed6ada083
     #     w_list.append("{: .6f}".format(ne_fit[0][j]))
     #     w_list.append("{: .6f}".format(te_fit[0][j]))
     #     w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
     #     w_datalist.append(w_writelist)
+<<<<<<< HEAD
    
     # with open('fit_27205_275.dat', 'w') as f:
     #     for l,w_line in enumerate(w_datalist):   
     #         f.writelines(w_line + "\n")
+=======
+   
+    # with open('fit_27205_275.dat', 'w') as f:
+    #     for l,w_line in enumerate(w_datalist):   
+    #         f.writelines(w_line + "\n")
+            
+    w_datalist = []   
+    for k in range(n_tot):
+        w_list =[]
+        w_list.append("{: .6f}".format(x_model[k]))
+        w_list.append("{: .6f}".format(ne_pop[0][k]))
+        w_list.append("{: .6f}".format(te_pop[0][k]))
+        w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
+        w_datalist.append(w_writelist)
+   
+    with open('fit_pop_27205_275.dat', 'w') as f:
+        for l,w_line in enumerate(w_datalist):   
+            f.writelines(w_line + "\n")
+>>>>>>> 462685ae194c78367980bb98865ab22ed6ada083
 
     
     
