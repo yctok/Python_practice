@@ -111,3 +111,16 @@ ne_decay_len_end = (expden_dsa_func(dsa[-12]) - expden_dsa_func(dsa[-11])) / \
     np.mean([expden_dsa_func(dsa[-11]), expden_dsa_func(dsa[-12])])
 
 print(ne_decay_len_end)
+
+x = np.linspace(1, len(dsa), len(dsa))
+x_pop = np.linspace(1, len(dsa), 200)
+dsa_f = interpolate.interp1d(x, dsa, fill_value = 'extrapolate')
+dsa_pop = np.linspace(min(dsa), max(dsa), 200)
+
+ch = dsa_f(x_pop)
+
+plt.figure(4)
+plt.plot(x_pop, dsa_f(x_pop), color= 'b')
+#plt.plot(x_pop, dsa_pop, color= 'b')
+plt.scatter(x, dsa, color='r')
+plt.show()
