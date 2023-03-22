@@ -39,7 +39,7 @@ def read_mastfile(mastfile_loc):
     return profiles
 
 if __name__ == '__main__':
-    n_tot = 60
+    n_tot = 200
     mast_dat_dict = read_mastfile(args.mastfile_loc)
     psi = mast_dat_dict['psi_normal']
     size = len(psi)
@@ -64,6 +64,20 @@ if __name__ == '__main__':
     
     te_pop = mf.super_fit_osbourne(x_model, te_f(x_model))
     te_superpop = mf.best_osbourne(x_model, te_f(x_model))
+    
+    ne_plat = np.zeros(178)
+    x_plat = np.zeros(178)
+    for j in range(178):
+        ne_plat[j] = ne_pop[0][j]
+        x_plat[j] = x_model[j]
+    
+    
+    gnexp = np.gradient(ne_plat) / (np.gradient(x_plat))
+    gne = np.gradient(ne_pop[0]) / (np.gradient(x_model))
+    
+    
+        
+    
     
     
     # plt.figure(1)
@@ -92,7 +106,7 @@ if __name__ == '__main__':
     plt.figure(1)
     plt.plot(x_model, ne_pop[0], color='r', label= 'electron density fit')
     plt.plot(x_model, ne_superpop[0], color='g', label= 'electron density super fit')
-    plt.scatter(psi, ne, label= 'electron density experiment data')
+    #plt.scatter(psi, ne, label= 'electron density experiment data')
     
     plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
     plt.ylabel('Electron density: ${n_e}$ (m$^{-3}$)', fontdict={"family":"Times New Roman","size": 20})
@@ -110,7 +124,23 @@ if __name__ == '__main__':
     plt.ylabel('Electron temperature: ${T_e}$ (eV)', fontdict={"family":"Times New Roman","size": 20})
     plt.title('Electron temperature',fontdict={"family":"Times New Roman","size": 20})
     plt.legend()
-
+    
+    plt.figure(3)
+    plt.plot(x_plat, gnexp, color='r', label= 'gradiant')
+    
+    plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    plt.ylabel('Electron density gradiant', fontdict={"family":"Times New Roman","size": 20})
+    plt.title('Electron density gradiant',fontdict={"family":"Times New Roman","size": 20})
+    plt.legend()
+    
+    plt.figure(4)
+    plt.plot(x_model, gne, color='r', label= 'gradiant')
+    
+    plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    plt.ylabel('Electron density gradiant', fontdict={"family":"Times New Roman","size": 20})
+    plt.title('Electron density gradiant',fontdict={"family":"Times New Roman","size": 20})
+    plt.legend()
+    
     plt.show()
     
     # w_datalist = []   
