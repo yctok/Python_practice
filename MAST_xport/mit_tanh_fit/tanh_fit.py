@@ -39,11 +39,7 @@ def read_mastfile(mastfile_loc):
     return profiles
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     n_tot = 60
-=======
-    n_tot = 200
->>>>>>> 462685ae194c78367980bb98865ab22ed6ada083
     mast_dat_dict = read_mastfile(args.mastfile_loc)
     psi = mast_dat_dict['psi_normal']
     size = len(psi)
@@ -118,43 +114,30 @@ if __name__ == '__main__':
     plt.show()
     
     # w_datalist = []   
-<<<<<<< HEAD
-    # for j in range(n_tot):
-    #     w_list =[]
-    #     w_list.append("{: .6f}".format(x_model[j]))
-=======
     # for j in range(size):
     #     w_list =[]
     #     w_list.append("{: .6f}".format(psi[j]))
->>>>>>> 462685ae194c78367980bb98865ab22ed6ada083
     #     w_list.append("{: .6f}".format(ne_fit[0][j]))
     #     w_list.append("{: .6f}".format(te_fit[0][j]))
     #     w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
     #     w_datalist.append(w_writelist)
-<<<<<<< HEAD
-   
-    # with open('fit_27205_275.dat', 'w') as f:
-    #     for l,w_line in enumerate(w_datalist):   
-    #         f.writelines(w_line + "\n")
-=======
    
     # with open('fit_27205_275.dat', 'w') as f:
     #     for l,w_line in enumerate(w_datalist):   
     #         f.writelines(w_line + "\n")
             
-    w_datalist = []   
-    for k in range(n_tot):
-        w_list =[]
-        w_list.append("{: .6f}".format(x_model[k]))
-        w_list.append("{: .6f}".format(ne_pop[0][k]))
-        w_list.append("{: .6f}".format(te_pop[0][k]))
-        w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
-        w_datalist.append(w_writelist)
+    # w_datalist = []   
+    # for k in range(n_tot):
+    #     w_list =[]
+    #     w_list.append("{: .6f}".format(x_model[k]))
+    #     w_list.append("{: .6f}".format(ne_pop[0][k]))
+    #     w_list.append("{: .6f}".format(te_pop[0][k]))
+    #     w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
+    #     w_datalist.append(w_writelist)
    
-    with open('fit_pop_27205_275.dat', 'w') as f:
-        for l,w_line in enumerate(w_datalist):   
-            f.writelines(w_line + "\n")
->>>>>>> 462685ae194c78367980bb98865ab22ed6ada083
+    # with open('fit_pop_27205_275.dat', 'w') as f:
+    #     for l,w_line in enumerate(w_datalist):   
+    #         f.writelines(w_line + "\n")
 
     
     
