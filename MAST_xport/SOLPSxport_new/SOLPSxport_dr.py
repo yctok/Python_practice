@@ -231,7 +231,10 @@ def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
     if impurity_list:
         print("Running getSOLPSCarbonProfs")
         xp.getSOLPSCarbonProfs(plotit=plotall,dsa=dsa,b2mn=b2mn,geo=geo,state=state,xport=xport)
-
+    
+    # print("Running populate")
+    # xp.populate(n_tot = 200)
+    
     print("Running calcXportCoeff")
     xp.calcXportCoef(plotit=plotall or plot_xport_coeffs, reduce_Ti_fileloc=reduce_Ti_fileloc, Dn_min=Dn_min,
                      vrc_mag=vrc_mag, verbose=verbose, Dn_max=Dn_max,
