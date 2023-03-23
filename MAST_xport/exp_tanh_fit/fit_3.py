@@ -59,12 +59,24 @@ if __name__ == '__main__':
     tanh_te_fit = tanh(x_model, popt_te[0], popt_te[1], popt_te[2], popt_te[3], popt_te[4])
     
     plt.figure(1)
-    plt.plot(x_model, tanh_ne_fit, color='r')
-    plt.scatter(psi, ne)
+    plt.plot(x_model, tanh_ne_fit, color='r', label= 'electron density fit')
+    plt.scatter(psi, ne, label= 'electron density experiment data')
+    
+    plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    plt.ylabel('Electron density: ${n_e}$ (m$^{-3}$)', fontdict={"family":"Times New Roman","size": 20})
+    plt.title('Electron density',fontdict={"family":"Times New Roman","size": 20})
+    plt.legend()
+    
+    
     
     plt.figure(2)
-    plt.plot(x_model, tanh_te_fit, color='r')
-    plt.scatter(psi, te)
+    plt.plot(x_model, tanh_te_fit, color='r', label= 'electron temperature fit')
+    plt.scatter(psi, te, label= 'electron temperature experiment data')
+    
+    plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    plt.ylabel('Electron temperature: ${T_e}$ (eV)', fontdict={"family":"Times New Roman","size": 20})
+    plt.title('Electron temperature',fontdict={"family":"Times New Roman","size": 20})
+    plt.legend()
        
     plt.show()
     
