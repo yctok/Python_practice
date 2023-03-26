@@ -80,16 +80,16 @@ if __name__ == '__main__':
        
     plt.show()
     
-    w_datalist = []   
-    for j in range(n_tot):
-        w_list =[]
-        w_list.append("{: .6f}".format(x_model[j]))
-        w_list.append("{: .6f}".format(tanh_ne_fit[j]))
-        w_list.append("{: .6f}".format(tanh_te_fit[j]))
-        w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
-        w_datalist.append(w_writelist)
+    # w_datalist = []   
+    # for j in range(n_tot):
+    #     w_list =[]
+    #     w_list.append("{: .6f}".format(x_model[j]))
+    #     w_list.append("{: .6f}".format(tanh_ne_fit[j]))
+    #     w_list.append("{: .6f}".format(tanh_te_fit[j]))
+    #     w_writelist = ' '.join(str(y)+ "\t" for y in w_list)
+    #     w_datalist.append(w_writelist)
    
-    with open('fit_27205_275.dat', 'w') as f:
-        for l,w_line in enumerate(w_datalist):   
-            f.writelines(w_line + "\n")
+    # with open('fit_27205_275.dat', 'w') as f:
+    #     for l,w_line in enumerate(w_datalist):   
+    #         f.writelines(w_line + "\n")
     
