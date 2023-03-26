@@ -10,3 +10,6 @@ Created on Fri Mar 10 14:44:55 2023
 import sympy as smp
 import numpy as np
 import matplotlib as plt
+
+x = smp.symbols('x')
+print(smp.cos(x))
