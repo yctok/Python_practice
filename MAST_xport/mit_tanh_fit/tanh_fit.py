@@ -76,10 +76,6 @@ if __name__ == '__main__':
     gne = np.gradient(ne_pop[0]) / (np.gradient(x_model))
     
     
-        
-    
-    
-    
     # plt.figure(1)
     # plt.plot(psi, ne_fit[0], color='r', label= 'electron density fit')
     # plt.plot(psi, ne_superfit[0], color='r', label= 'electron density fit')
@@ -106,7 +102,7 @@ if __name__ == '__main__':
     plt.figure(1)
     plt.plot(x_model, ne_pop[0], color='r', label= 'electron density fit')
     plt.plot(x_model, ne_superpop[0], color='g', label= 'electron density super fit')
-    #plt.scatter(psi, ne, label= 'electron density experiment data')
+    plt.scatter(psi, ne, label= 'electron density experiment data')
     
     plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
     plt.ylabel('Electron density: ${n_e}$ (m$^{-3}$)', fontdict={"family":"Times New Roman","size": 20})
@@ -125,21 +121,21 @@ if __name__ == '__main__':
     plt.title('Electron temperature',fontdict={"family":"Times New Roman","size": 20})
     plt.legend()
     
-    plt.figure(3)
-    plt.plot(x_plat, gnexp, color='r', label= 'gradiant')
+    # plt.figure(3)
+    # plt.plot(x_plat, gnexp, color='r', label= 'gradiant')
     
-    plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
-    plt.ylabel('Electron density gradiant', fontdict={"family":"Times New Roman","size": 20})
-    plt.title('Electron density gradiant',fontdict={"family":"Times New Roman","size": 20})
-    plt.legend()
+    # plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    # plt.ylabel('Electron density gradiant', fontdict={"family":"Times New Roman","size": 20})
+    # plt.title('Electron density gradiant',fontdict={"family":"Times New Roman","size": 20})
+    # plt.legend()
     
-    plt.figure(4)
-    plt.plot(x_model, gne, color='r', label= 'gradiant')
+    # plt.figure(4)
+    # plt.plot(x_model, gne, color='r', label= 'gradiant')
     
-    plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
-    plt.ylabel('Electron density gradiant', fontdict={"family":"Times New Roman","size": 20})
-    plt.title('Electron density gradiant',fontdict={"family":"Times New Roman","size": 20})
-    plt.legend()
+    # plt.xlabel('Magnetic flux coordinate: ${\psi_N}$', fontdict={"family":"Times New Roman","size": 20})
+    # plt.ylabel('Electron density gradiant', fontdict={"family":"Times New Roman","size": 20})
+    # plt.title('Electron density gradiant',fontdict={"family":"Times New Roman","size": 20})
+    # plt.legend()
     
     plt.show()
     
