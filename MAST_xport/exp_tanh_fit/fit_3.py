@@ -6,7 +6,6 @@ Created on Wed Mar 22 00:02:41 2023
 """
 
 import numpy as np
-import argparse
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 import tools as tl
