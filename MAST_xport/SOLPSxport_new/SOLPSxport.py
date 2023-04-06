@@ -839,14 +839,21 @@ class SOLPSxport:
             if xport is None:
                 xport = sut.read_transport_files(".", dsa=dsa, geo=geo, state=state)
             
+            
+            
             sy = sut.avg_like_b2plot(geo['gs'][b2mn['jxa']+1,:,1])        
             z = np.ones((geo['nx']+2,geo['ny']+2,state['ns']))
+            
+            from IPython import embed; embed()
+            
             for i in range(state['ns']):
                 z[:,:,i] = z[:,:,i]*state['zamin'][i]        
             fluxTot = sut.avg_like_b2plot(np.sum(state['fna'][b2mn['jxa']+1,:,1,:]*z[b2mn['jxa']+1,:,:],axis=1))/sy
             fluxD   = sut.avg_like_b2plot(state['fna'][b2mn['jxa']+1,:,1,1])/sy
             fluxConv = sut.avg_like_b2plot(np.sum(xport['vlay'][:,:]*state['na'][b2mn['jxa']+1,:,:]*z[b2mn['jxa']+1,:,:],axis=1))/sy
-                
+            
+            
+            
             na = np.sum(state['na'][b2mn['jxa']+1,:,:],axis=1)        
             qe = sut.avg_like_b2plot(state['fhe'][b2mn['jxa']+1,:,1])/sy
             qi = sut.avg_like_b2plot(state['fhi'][b2mn['jxa']+1,:,1])/sy
