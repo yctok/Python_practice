@@ -350,9 +350,10 @@ def getProfDBPedFit(shotnum, timeid, runid, write_to_file=None):
     Loads saved data from Tom's tools MDSplus server
      'XXdatpsi' :  Raw data
      
-     write_to_file: Give file name (prefer extension '.txt')
-                    .pkl files using pickle module are the old format, but these can break if
-                    you ever use a different version of Python to read than what was used to write.
+     write_to_file: Give file name (prefer extensions '.txt' or '.pkl')
+                    .pkl files can get loaded later as native Python library, but must be
+                    generated with the same version of Python, so generate the file using
+                    this routine on the same system you'll be loading the file with
     """
 
     tree = 'profdb_ped'
@@ -394,15 +395,14 @@ read .dat file from MAST
 def read_mastfile(mastfile_loc):
     with open(mastfile_loc, mode='r') as dfile:
         lines = dfile.readlines()
-
+    
     profiles = {}
     nlines_tot = len(lines)
-
     psi_n = np.zeros(nlines_tot)
     ne = np.zeros(nlines_tot)
     te = np.zeros(nlines_tot)
     i = 0
-
+    
     while i < nlines_tot:
         r_line = lines[i].split()
         psi_n[i] = float(r_line[0])
@@ -415,8 +415,7 @@ def read_mastfile(mastfile_loc):
     profiles['electron_temperature(KeV)'] = te
     return profiles
 
-
-#------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 def read_pfile(pfile_loc):
     """
