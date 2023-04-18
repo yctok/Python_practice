@@ -844,7 +844,7 @@ class SOLPSxport:
             sy = sut.avg_like_b2plot(geo['gs'][b2mn['jxa']+1,:,1])        
             z = np.ones((geo['nx']+2,geo['ny']+2,state['ns']))
             
-            from IPython import embed; embed()
+            # from IPython import embed; embed()
             
             for i in range(state['ns']):
                 z[:,:,i] = z[:,:,i]*state['zamin'][i]        
