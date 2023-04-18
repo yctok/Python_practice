@@ -93,8 +93,8 @@ def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
          fractional_change = 1, exp_prof_rad_shift = 0, ti_fileloc = None,
          impurity_list = [], use_existing_last10=False, plot_xport_coeffs=True,
          plotall=False, verbose=False, figblock=False,
-         ti_decay_len=0.015, te_decay_len = None, ne_decay_len = None,
-         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e18, shift= 1):
+         ti_decay_len=0.015, te_decay_len = 0.015, ne_decay_len = None,
+         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e17, shift= 1):
     """
     Driver for the code, returns an object of class 'SOLPSxport'
 
@@ -346,8 +346,8 @@ def increment_run(gfile_loc = None, new_filename='b2.transport.inputfile_new',
          fractional_change = 1, exp_prof_rad_shift = 0, ti_fileloc = None,
          impurity_list = [], use_existing_last10=False, plot_xport_coeffs=True,
          plotall=False, verbose=False, figblock=False,
-         ti_decay_len=0.015, te_decay_len = None, ne_decay_len = None,
-         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e18, shift= 1,
+         ti_decay_len=0.015, te_decay_len = 0.015, ne_decay_len = None,
+         ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e17, shift= 1,
          ntim_new = 50, dtim_new = '1.0e-6', Dn_min = 0.0005):
     """
     This routine runs the main calculation of transport coefficients, then saves the old
