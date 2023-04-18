@@ -134,7 +134,8 @@ def B2pl(cmds, wdir='.', debug=False):
         cmdstr = 'echo "' + cmds + '" | b2plot'
         print(cmdstr)
     else:
-#        cmdstr = 'echo "' + cmds + '" | b2plot >&/dev/null'
+        # cmdstr = 'echo "' + cmds + '" | b2plot'
+        # cmdstr = 'echo "' + cmds + '" | b2plot >&/dev/null'
         cmdstr = 'echo "' + cmds + '" | b2plot 2>/dev/null'
         testcmd = subprocess.check_output(cmdstr,shell=True)
         if testcmd == b'':
@@ -148,6 +149,8 @@ def B2pl(cmds, wdir='.', debug=False):
         print(cmds)
         print('in directory: ' + wdir + '\n')
         raise OSError
+
+    # from IPython import embed; embed()
 
     x, y = [], []
     with open(fname) as f:
