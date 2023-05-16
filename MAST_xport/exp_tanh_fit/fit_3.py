@@ -36,7 +36,7 @@ if __name__ == '__main__':
     print(popt_ne)
     popt_te, pcov_te = curve_fit(tl.tanh, psi, te, p1)
     print(popt_te) 
-    x_model = np.linspace(min(psi), solps_psi, n_tot)
+    x_model = np.linspace(min(psi), max(psi), n_tot)
     tanh_ne_fit = tl.tanh(x_model, popt_ne[0], popt_ne[1], popt_ne[2], popt_ne[3], popt_ne[4])
     tanh_te_fit = tl.tanh(x_model, popt_te[0], popt_te[1], popt_te[2], popt_te[3], popt_te[4])
     
