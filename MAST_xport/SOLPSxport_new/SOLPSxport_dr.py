@@ -86,9 +86,9 @@ plt.rcParams.update({'mathtext.default': 'regular'})
 def main(gfile_loc = None, new_filename='b2.transport.inputfile_new',
          profiles_fileloc=None, shotnum=None, ptimeid=None, prunid=None,
          nefit='tanh', tefit='tanh', ncfit='spl', chii_eq_chie = False,  # ti_eq_te = False,
-         Dn_min=0.001, vrc_mag=0.0, Dn_max=20,
+         Dn_min=0.001, vrc_mag=0.0, Dn_max=12,
          chie_use_grad = False, chii_use_grad = False, new_b2xportparams = True,
-         chie_min = 0.01, chii_min = 0.01, chie_max = 20, chii_max = 20,
+         chie_min = 0.01, chii_min = 0.01, chie_max = 12, chii_max = 12,
          reduce_Ti_fileloc = None, update_old_last10s = False,
          fractional_change = 1, exp_prof_rad_shift = 0, ti_fileloc = None,
          impurity_list = [], use_existing_last10=False, plot_xport_coeffs=True,
@@ -339,16 +339,16 @@ if __name__ == '__main__':
 def increment_run(gfile_loc = None, new_filename='b2.transport.inputfile_new',
          profiles_fileloc= None, shotnum= None, ptimeid= None, prunid= None,
          nefit='tanh', tefit='tanh', ncfit='spl', chii_eq_chie = False,  # ti_eq_te = False,
-         vrc_mag=0.0, Dn_max=200,
+         vrc_mag=0.0, Dn_max=12,
          chie_use_grad = False, chii_use_grad = False, new_b2xportparams = True,
-         chie_min = 0.01, chii_min = 0.01, chie_max = 400, chii_max = 400,
+         chie_min = 0.01, chii_min = 0.01, chie_max = 12, chii_max = 12,
          reduce_Ti_fileloc = None, update_old_last10s = False,
          fractional_change = 1, exp_prof_rad_shift = 0, ti_fileloc = None,
          impurity_list = [], use_existing_last10=False, plot_xport_coeffs=True,
          plotall=False, verbose=False, figblock=False,
          ti_decay_len=0.015, te_decay_len = 0.015, ne_decay_len = None,
          ti_decay_min=1, te_decay_min = 1, ne_decay_min = 1e17, shift= 1,
-         ntim_new = 50, dtim_new = '1.0e-6', Dn_min = 0.0005):
+         ntim_new = 1000, dtim_new = '2.0e-5', Dn_min = 0.0005):
     """
     This routine runs the main calculation of transport coefficients, then saves the old
     b2.transport.inputfile, b2.transport.parameters and b2fstati files with the iteration
